@@ -7,6 +7,9 @@ filetype plugin indent on
 " Syntax highlighting
 syntax on
 
+" Set yank operations to use os clipboard
+set clipboard=unnamed
+
 """" General settings """"
 
 " Show cursor position
@@ -14,11 +17,11 @@ set ruler
 " Show line and column numbers
 set number
 " Vertical column
-if exists("&colorcolumn")
-  set colorcolumn=80
-else
-  au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
-endif
+"if exists("&colorcolumn")
+"  set colorcolumn=80
+"else
+"  au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
+"endif
 " No blinking
 set novisualbell
 " No noise
