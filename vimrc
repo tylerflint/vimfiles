@@ -47,7 +47,7 @@ set linebreak
 set wrap
 " Visually differentiate a wrapped line from others
 set showbreak=…
-set wildignore+=*.swo,*.swp,*.jpg,*.png,*.gif,.git,log/*,vendor/*,tmp/*,script/*
+set wildignore+=*.swo,*.swp,*.jpg,*.png,*.gif,.git,log/*,vendor/*,tmp/*,script/*,*.un~
 " Wildmenu
 set wildmenu
 set wildmode=list:longest
@@ -77,8 +77,8 @@ map Q gq
 set nrformats=hex
 
 " Undo
-" set undofile
-" set undodir=~/.vimundo
+set undofile
+set undodir=~/.vimundo
 
 " Do not use swapfiles or backup since writebackup is used
 " writebackup is still used, so a copy is always kept in memory
@@ -120,7 +120,6 @@ set whichwrap+=<,>,h,l
 set ignorecase
 " case-sensitive for expressions
 set smartcase
-map <leader><Esc> :noh<CR>
 
 "" Typos
 nmap :W :w
@@ -130,6 +129,9 @@ nmap :Tabe :tabe
 nmap :Noh :noh
 
 let mapleader = ","
+
+" Easy no-highight
+map <leader><Esc> :noh<CR>
 
 " Shortcut to toggle list (i for invisibles)
 nmap <leader>i :set list!<CR>
@@ -210,6 +212,9 @@ map ,f [I:let nr = input("Which one: ")<Bar>exe "normal " . nr ."[\t"<CR>
 " Remove trailing whitespace
 map <silent> <leader>rw :%s/\s\+$//<CR>:let @/=''<CR>:exe ":echo 'whitespace removed'"<CR>
 
+" Run Jasmine specs
+map <leader>js :!jasmine-node spec --noColor<CR>
+
 " http://vimcasts.org/episodes/bubbling-text/
 " Bubble single lines
 nmap <C-Up> [e
@@ -228,6 +233,11 @@ autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
 " autocmd FileType ruby setlocal foldmethod=syntax
 " autocmd FileType css  setlocal foldmethod=indent shiftwidth=2 tabstop=2
 
+" Filetypes
+autocmd BufNewFile,BufRead Guardfile set filetype=ruby
+autocmd BufNewFile,BufRead *.json set ft=json
+autocmd BufNewfile,BufRead *.snippets set noexpandtab
+
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
@@ -238,14 +248,14 @@ map <leader>bi :BundleInstall<CR>
 """ Plugins """"
 
 " Ack
-Bundle "mileszs/ack"
+Bundle "mileszs/ack.vim"
 map <leader>A :Ack<space>
 
 " Align
 Bundle "tsaleh/vim-align"
 
 " Cocoa
-Bundle "msanders/cocoa.vim"
+" Bundle "msanders/cocoa.vim"
 
 " Coffee-script
 Bundle "kchmck/vim-coffee-script"
@@ -253,7 +263,7 @@ Bundle "kchmck/vim-coffee-script"
 " let coffee_compile_on_save = 1
 
 " Cucumber
-Bundle "tpope/vim-cucumber"
+" Bundle "tpope/vim-cucumber"
 
 " Eco
 Bundle "jayferd/eco.vim"
@@ -278,7 +288,7 @@ Bundle "tpope/vim-fugitive"
 " map <leader>R :FuzzyFinderTextMateRefreshFiles<CR>
 
 " Gist
-Bundle "mattn/gist-vim"
+" Bundle "mattn/gist-vim"
 
 " Gundo
 Bundle "sjl/gundo.vim"
@@ -291,7 +301,7 @@ Bundle "tpope/vim-haml"
 Bundle "othree/html5.vim"
 
 " Indent guides
-Bundle "nathanaelkane/vim-indent-guides"
+" Bundle "nathanaelkane/vim-indent-guides"
 
 " Ingretu
 Bundle "gmarik/ingretu"
@@ -312,7 +322,7 @@ Bundle "nelstrom/vim-mac-classic-theme"
 Bundle "tpope/vim-markdown"
 
 " Markdown preview
-Bundle "robgleeson/vim-markdown-preview"
+Bundle "peterhost/vim-markdown-preview"
 
 " Matchit
 Bundle "mhz/vim-matchit"
@@ -333,6 +343,9 @@ map <leader>d :NERDTreeToggle<CR>
 " Pastie
 Bundle "tpope/vim-pastie"
 
+" PeepOpen
+Bundle "git://github.com/topfunky/PeepOpen-EditorSupport.git", { 'rtp': 'vim-peepopen' }
+
 " Ragtag
 Bundle "tpope/vim-ragtag"
 
@@ -346,7 +359,7 @@ Bundle "tpope/vim-rails"
 Bundle "tpope/vim-repeat"
 
 " Relative Number
-Bundle "vim-scripts/RltvNmbr.vim"
+" Bundle "vim-scripts/RltvNmbr.vim"
 
 " RSpec
 Bundle "taq/vim-rspec"
@@ -355,39 +368,39 @@ Bundle "taq/vim-rspec"
 Bundle "vim-ruby/vim-ruby"
 
 " Ruby debugger
-Bundle "astashov/vim-ruby-debugger"
+" Bundle "astashov/vim-ruby-debugger"
 
 " SCSS Syntax
-Bundle "cakebaker/scss-syntax.vim"
+" Bundle "cakebaker/scss-syntax.vim"
 
 " Shoulda
-Bundle "tsaleh/vim-shoulda"
+" Bundle "tsaleh/vim-shoulda"
 
 " Showmarks
-Bundle "harleypig/ShowMarks"
-let g:showmarks_enable=0
+" Bundle "harleypig/ShowMarks"
+" let g:showmarks_enable=0
 
 " Snipmate
-Bundle "git://github.com/msanders/snipmate.vim.git"
-
-" Snipmate snippets
-Bundle "git://github.com/scrooloose/snipmate-snippets.git", { 'rtp': 'vim/' }
+Bundle "MarcWeber/vim-addon-mw-utils"
+Bundle "tomtom/tlib_vim"
+Bundle "honza/snipmate-snippets"
+Bundle "garbas/vim-snipmate"
 let g:snippets_dir='~/.vim/bundle/snipmate-snippets,~/.vim/bundle/snipmate-nodejs'
 
 " Snipmate node.js
-Bundle "jamescarr/snipmate-nodejs"
+" Bundle "jamescarr/snipmate-nodejs"
 
 " Solarized
 Bundle "altercation/vim-colors-solarized"
 
 " Sparkup
-Bundle "bingaman/vim-sparkup"
+" Bundle "bingaman/vim-sparkup"
 
 " Specky
-Bundle "vim-scripts/Specky"
+" Bundle "vim-scripts/Specky"
 
 " Supertab
-Bundle "ervandew/supertab"
+" Bundle "ervandew/supertab"
 
 " Surround
 Bundle "tpope/vim-surround"
@@ -407,24 +420,24 @@ if exists(":Tabularize")
 endif
 
 " Tcomment
-Bundle "tsaleh/vim-tcomment"
+" Bundle "tsaleh/vim-tcomment"
 
 " https://gist.github.com/287147
 " Especially useful for cucumber steps
-inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
-function! s:align()
-  let p = '^\s*|\s.*\s|\s*$'
-  if exists(':Tabularize') && getline('.') =~# '^\s*|' && (getline(line('.')-1) =~# p || getline(line('.')+1) =~# p)
-    let column = strlen(substitute(getline('.')[0:col('.')],'[^|]','','g'))
-    let position = strlen(matchstr(getline('.')[0:col('.')],'.*|\s*\zs.*'))
-    Tabularize/|/l1
-    normal! 0
-    call search(repeat('[^|]*|',column).'\s\{-\}'.repeat('.',position),'ce',line('.'))
-  endif
-endfunction
+" inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
+" function! s:align()
+"   let p = '^\s*|\s.*\s|\s*$'
+"   if exists(':Tabularize') && getline('.') =~# '^\s*|' && (getline(line('.')-1) =~# p || getline(line('.')+1) =~# p)
+"     let column = strlen(substitute(getline('.')[0:col('.')],'[^|]','','g'))
+"     let position = strlen(matchstr(getline('.')[0:col('.')],'.*|\s*\zs.*'))
+"     Tabularize/|/l1
+"     normal! 0
+"     call search(repeat('[^|]*|',column).'\s\{-\}'.repeat('.',position),'ce',line('.'))
+"   endif
+" endfunction
 
 " Taglist
-Bundle "mexpolk/vim-taglist"
+Bundle "thisivan/vim-taglist"
 
 " Textobj User
 Bundle "kana/vim-textobj-user"
@@ -436,11 +449,11 @@ Bundle "nelstrom/vim-textobj-rubyblock"
 Bundle "tpope/vim-unimpaired"
 
 " Vim Kata
-Bundle "canadaduane/VimKata"
-map <leader>vk :VimKata
+" Bundle "canadaduane/VimKata"
+" map <leader>vk :VimKata
 
 " VisIncr
-Bundle "vim-scripts/VisIncr"
+" Bundle "vim-scripts/VisIncr"
 
 " Yankring
 Bundle "chrismetcalf/vim-yankring"
