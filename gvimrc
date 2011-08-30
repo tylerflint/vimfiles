@@ -13,6 +13,6 @@ colorscheme ego
 "   set transp=4
 " endif
 set showtabline=2
-set guifont=Monaco:h11
+set guifont=Monaco:h10
 set linespace=2
 set fuoptions=maxvert,maxhorz

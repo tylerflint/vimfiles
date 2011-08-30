@@ -237,6 +237,7 @@ autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
 autocmd BufNewFile,BufRead Guardfile set filetype=ruby
 autocmd BufNewFile,BufRead *.json set ft=json
 autocmd BufNewfile,BufRead *.snippets set noexpandtab
+autocmd FileType erlang setlocal shiftwidth=4 tabstop=4
 
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
@@ -253,6 +254,7 @@ map <leader>A :Ack<space>
 
 " Align
 Bundle "tsaleh/vim-align"
+vmap <leader>al :Align =<CR>
 
 " Cocoa
 " Bundle "msanders/cocoa.vim"
@@ -264,6 +266,9 @@ Bundle "kchmck/vim-coffee-script"
 
 " Cucumber
 " Bundle "tpope/vim-cucumber"
+
+" EasyMotion
+Bundle "vim-scripts/EasyMotion"
 
 " Eco
 Bundle "jayferd/eco.vim"
@@ -385,7 +390,9 @@ Bundle "MarcWeber/vim-addon-mw-utils"
 Bundle "tomtom/tlib_vim"
 Bundle "honza/snipmate-snippets"
 Bundle "garbas/vim-snipmate"
-let g:snippets_dir='~/.vim/bundle/snipmate-snippets,~/.vim/bundle/snipmate-nodejs'
+let g:snippets_dir='~/.vim/bundle/snipmate-snippets,~/.vim/bundle/snipmate-nodejs,~/.vim/snippets'
+" quick edit of custom snippets
+map <leader>snip :NERDTree ~/.vim/snippets/<CR>
 
 " Snipmate node.js
 " Bundle "jamescarr/snipmate-nodejs"
