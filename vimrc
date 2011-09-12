@@ -130,6 +130,11 @@ nmap :Noh :noh
 
 let mapleader = ","
 
+" Auto save on esc
+imap <Esc> <Esc>:w<CR>
+map <Esc> <Esc>:w<CR>
+vmap <Esc> <Esc>:w<CR>
+
 " Easy no-highight
 map <leader><Esc> :noh<CR>
 
@@ -191,6 +196,10 @@ imap <D-[> <C-O><<
 
 nmap <leader>x :!
 
+" easy add newline above and below
+map <S-Enter> O<Esc>j
+map <CR> o<Esc>k
+
 " ctags
 set tags=.tags
 map <leader>e :silent :! ctags --recurse --sort=yes -f .tags<CR>:exe ":echo 'tags generated'"<CR>
@@ -238,6 +247,7 @@ autocmd BufNewFile,BufRead Guardfile set filetype=ruby
 autocmd BufNewFile,BufRead *.json set ft=json
 autocmd BufNewfile,BufRead *.snippets set noexpandtab
 autocmd FileType erlang setlocal shiftwidth=4 tabstop=4
+autocmd BufNewFile,BufRead *.coffee set filetype=coffee
 
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
@@ -274,7 +284,8 @@ Bundle "vim-scripts/EasyMotion"
 Bundle "jayferd/eco.vim"
 
 " Ego
-Bundle "geetarista/ego.vim"
+" Bundle "geetarista/ego.vim"
+Bundle "tylerflint/ego.vim"
 
 " Endwise
 Bundle "tpope/vim-endwise"

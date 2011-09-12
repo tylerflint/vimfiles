@@ -9,10 +9,11 @@ endif
 set lines=60
 set columns=210
 colorscheme ego
+" colorscheme ir_black
 " if &background == "dark"
 "   set transp=4
 " endif
 set showtabline=2
-set guifont=Monaco:h10
+set guifont=Monaco:h11
 set linespace=2
 set fuoptions=maxvert,maxhorz
