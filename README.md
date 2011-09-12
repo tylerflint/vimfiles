@@ -8,7 +8,7 @@ WARNING: Existing files are deleted during installation. Use at your own risk.
 
 To use, just run the following commands:
 
-    git clone git://github.com/geetarista/vimfiles.git && cd vimfiles
+    git clone git://github.com/tylerflint/vimfiles.git && cd vimfiles
 
     ./install
 
